@@ -1,0 +1,13 @@
+{
+  "endpoint": "app.bsky.feed.searchPosts",
+  "query": {
+    "q": "\"iphone duo\"",
+    "sort": "latest",
+    "lang": "en",
+    "since": "2026-09-20T00:00:00Z",
+    "until": "2026-09-21T00:00:00Z",
+    "limit": 100
+  },
+  "status": 200,
+  "collected_at": "2026-11-14 05:08:26 UTC"
+}

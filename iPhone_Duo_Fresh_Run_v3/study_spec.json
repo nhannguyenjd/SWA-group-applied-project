@@ -1,0 +1,7 @@
+{
+  "event": "2026-09-09",
+  "days": 14,
+  "queries": ["\"iphone duo\"", "iphoneduo", "\"iphone fold\"", "\"foldable iphone\""],
+  "timezone": "UTC",
+  "version": "announcement-stage1-v1"
+}

@@ -1,0 +1,13 @@
+{
+  "endpoint": "app.bsky.feed.searchPosts",
+  "query": {
+    "q": "\"iphone fold\"",
+    "sort": "latest",
+    "lang": "en",
+    "since": "2026-08-29T00:00:00Z",
+    "until": "2026-08-30T00:00:00Z",
+    "limit": 100
+  },
+  "status": 200,
+  "collected_at": "2026-11-14 05:05:03 UTC"
+}

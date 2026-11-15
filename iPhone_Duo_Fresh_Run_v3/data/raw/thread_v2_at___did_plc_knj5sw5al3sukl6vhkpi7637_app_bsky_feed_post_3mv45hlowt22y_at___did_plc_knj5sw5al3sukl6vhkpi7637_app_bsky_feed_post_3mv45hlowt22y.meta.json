@@ -1,0 +1,10 @@
+{
+  "endpoint": "app.bsky.feed.getPostThread",
+  "query": {
+    "uri": "at://did:plc:knj5sw5al3sukl6vhkpi7637/app.bsky.feed.post/3mv45hlowt22y",
+    "depth": 100,
+    "parentHeight": 0
+  },
+  "status": 200,
+  "collected_at": "2026-11-14 05:08:38 UTC"
+}

@@ -1,0 +1,9 @@
+{
+  "endpoint": "app.bsky.graph.getFollows",
+  "query": {
+    "actor": "did:plc:nxmjxl2wiyat43p3gikkt37w",
+    "limit": 50
+  },
+  "status": 200,
+  "collected_at": "2026-11-14 05:08:45 UTC"
+}
