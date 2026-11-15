@@ -1,0 +1,880 @@
+---
+title: "iPhone Duo Announcement on Bluesky"
+subtitle: "Price and affordability: fresh collection and revised preliminary analysis"
+author:
+  - "Group members and student IDs (stage 1 / stage 2)"
+  - "Nguyen Le Trong Nhan: 23005473 / 22201018"
+  - "Dinh Nguyen Trung Hieu: 21000468 / 22118635"
+date: "COMP3020 | SWA-T326WSD-1 | Term 3, 2026"
+output:
+  pdf_document:
+    latex_engine: xelatex
+    toc: true
+    number_sections: true
+    keep_tex: true
+fontsize: 11pt
+geometry: margin=25mm
+mainfont: Latin Modern Roman
+monofont: Latin Modern Mono
+colorlinks: true
+link-citations: true
+header-includes:
+  - \usepackage{float}
+  - \usepackage{fvextra}
+  - \DefineVerbatimEnvironment{Highlighting}{Verbatim}{breaklines,commandchars=\\\{\},fontsize=\footnotesize}
+  - \setlength{\emergencystretch}{3em}
+references: [{"URL": "https://www.apple.com/newsroom/2026/09/apple-unveils-iphone-duo/", "accessed": {"date-parts": [[2026, 11, 12]]}, "author": [{"literal": "Apple"}], "id": "apple2026", "issued": {"date-parts": [[2026, 9, 9]]}, "title": "Apple unveils iPhone duo", "type": "webpage"}, {"URL": "https://endpoints.bsky.app/", "accessed": {"date-parts": [[2026, 11, 12]]}, "author": [{"literal": "Bluesky"}], "id": "bluesky2026", "issued": {"date-parts": [[2026]]}, "title": "Bluesky HTTP API reference", "type": "webpage"}, {"DOI": "10.1145/3694809.3700740", "URL": "https://arxiv.org/abs/2402.03239", "author": [{"family": "Kleppmann", "given": "Martin"}, {"family": "Frazee", "given": "Paul"}, {"family": "Gold", "given": "Jake"}, {"family": "Graber", "given": "Jay"}, {"family": "Holmgren", "given": "Daniel"}, {"family": "Ivy", "given": "Devin"}, {"family": "Johnson", "given": "Jeromy"}, {"family": "Newbold", "given": "Bryan"}, {"family": "Volpert", "given": "Jaz"}], "container-title": "Proceedings of the ACM CoNEXT-2024 Workshop on the Decentralization of the Internet", "id": "kleppmann2024", "issued": {"date-parts": [[2024]]}, "title": "Bluesky and the AT protocol: Usable decentralized social media", "title-short": "Bluesky and the AT protocol", "type": "article-journal"}, {"DOI": "10.1017/CBO9780511809071", "URL": "https://nlp.stanford.edu/IR-book/", "author": [{"family": "Manning", "given": "Christopher D."}, {"family": "Raghavan", "given": "Prabhakar"}, {"family": "Schütze", "given": "Hinrich"}], "id": "manning2008", "issued": {"date-parts": [[2008]]}, "publisher": "Cambridge University Press", "title": "Introduction to information retrieval", "type": "book"}, {"DOI": "10.18637/jss.v025.i05", "author": [{"family": "Feinerer", "given": "Ingo"}, {"family": "Hornik", "given": "Kurt"}, {"family": "Meyer", "given": "David"}], "container-title": "Journal of Statistical Software", "id": "feinerer2008", "issue": "5", "issued": {"date-parts": [[2008]]}, "page": "1-54", "title": "Text mining infrastructure in r", "type": "article-journal", "volume": "25"}, {"DOI": "10.1016/0377-0427(87)90125-7", "author": [{"family": "Rousseeuw", "given": "Peter J."}], "container-title": "Journal of Computational and Applied Mathematics", "id": "rousseeuw1987", "issued": {"date-parts": [[1987]]}, "page": "53-65", "title": "Silhouettes: A graphical aid to the interpretation and validation of cluster analysis", "title-short": "Silhouettes", "type": "article-journal", "volume": "20"}, {"DOI": "10.1016/0378-8733(78)90021-7", "author": [{"family": "Freeman", "given": "Linton C."}], "container-title": "Social Networks", "id": "freeman1979", "issue": "3", "issued": {"date-parts": [[1979]]}, "page": "215-239", "title": "Centrality in social networks: Conceptual clarification", "title-short": "Centrality in social networks", "type": "article-journal", "volume": "1"}, {"URL": "https://stat.ethz.ch/R-manual/R-patched/library/stats/html/chisq.test.html", "accessed": {"date-parts": [[2026, 11, 12]]}, "author": [{"literal": "R Core Team"}], "id": "rchi2026", "issued": {"date-parts": [[2026]]}, "title": "Pearson’s chi-squared test for count data", "type": "webpage"}, {"URL": "https://stat.ethz.ch/R-manual/R-devel/library/stats/html/kmeans.html", "accessed": {"date-parts": [[2026, 11, 12]]}, "author": [{"literal": "R Core Team"}], "id": "rkmeans2026", "issued": {"date-parts": [[2026]]}, "title": "K-means clustering", "type": "webpage"}, {"URL": "https://stat.ethz.ch/R-manual/R-devel/library/stats/html/cmdscale.html", "accessed": {"date-parts": [[2026, 11, 12]]}, "author": [{"literal": "R Core Team"}], "id": "rmds2026", "issued": {"date-parts": [[2026]]}, "title": "Classical (metric) multidimensional scaling", "type": "webpage"}, {"URL": "https://r.igraph.org/reference/page_rank.html", "accessed": {"date-parts": [[2026, 11, 12]]}, "author": [{"literal": "igraph contributors"}], "id": "igraph2026", "issued": {"date-parts": [[2026]]}, "title": "The page rank algorithm", "type": "webpage"}, {"author": [{"literal": "Western Sydney University"}], "id": "wsu2026", "issued": {"date-parts": [[2026]]}, "note": "University-provided assignment brief", "title": "COMP3020 social web analytics: Group project assessment, term 3 2026, version 5", "title-short": "COMP3020 social web analytics", "type": ""}, {"author": [{"literal": "Western Sydney University"}], "id": "wsumodules2026", "issued": {"date-parts": [[2026]]}, "note": "University-provided lecture slides, including Week 4 text mining materials", "title": "COMP3020 social web analytics: Modules 3–9", "title-short": "COMP3020 social web analytics", "type": ""}, {"id": "lorenz2019", "type": "article-journal", "title": "Accelerating dynamics of collective attention", "author": [{"family": "Lorenz-Spreen", "given": "Philipp"}, {"family": "Mønsted", "given": "Bjarke Mørch"}, {"family": "Hövel", "given": "Philipp"}, {"family": "Lehmann", "given": "Sune"}], "issued": {"date-parts": [[2019]]}, "container-title": "Nature Communications", "volume": "10", "page": "1759", "DOI": "10.1038/s41467-019-09311-w"}, {"id": "cld3", "type": "webpage", "title": "Compact Language Detector 3: R package documentation", "author": [{"literal": "rOpenSci"}], "URL": "https://docs.ropensci.org/cld3/reference/cld3.html", "accessed": {"date-parts": [[2026, 11, 13]]}}]
+---
+
+> **ARCHIVED STAGE 1 FILE — DO NOT KNIT OR RUN**
+>
+> This file produced the saved data and analysis outputs. Knitting it again can rerun analyses and overwrite saved outputs. In additional, the Bluesky name and password are deleted so this file cannot run, all saved result and figures are restored in the zip file and 'iPhone_Duo_Fresh_Run_v3' folder, these can be find in the github repo.
+
+```{r prevent-accidental-knit, include=FALSE, error=FALSE}
+stop("Archived Stage 1 file. Knit iPhone_Duo_Report_Only.Rmd instead.")
+```
+
+```{r setup, include=FALSE}
+# FIRST RUN: install the packages below in the Console if prompted.
+# MODE: "auto" collects if no completed dataset exists; "saved" never contacts
+# Bluesky; "collect" resumes/recollects using the same response cache.
+mode <- "auto"
+# First knit collects into the NEW folder below and recalculates all analyses.
+# Subsequent knits preserve that snapshot and rerun the analyses.
+event_date <- as.Date("2026-09-09")
+window_days <- 14L
+queries <- c('"iphone duo"', "iphoneduo", '"iphone fold"', '"foldable iphone"')
+# Choose a NEW output_folder to obtain a completely fresh collection snapshot.
+output_folder <- "iPhone_Duo_Fresh_Run_v3"
+packages <- c("atrrr","httr","jsonlite","tm","igraph","cluster","knitr","rmarkdown","zip","cld3")
+missing <- packages[!vapply(packages,requireNamespace,logical(1),quietly=TRUE)]
+if(length(missing)) stop("Run in the RStudio Console: install.packages(c(",
+ paste(sprintf('"%s"',missing),collapse=", "),")) and knit again.")
+knitr::opts_chunk$set(echo=FALSE,warning=FALSE,message=FALSE,fig.pos="H",
+ fig.width=7,fig.height=4.5,out.width="100%",fig.align="center",error=FALSE)
+base_dir <- normalizePath(getwd(),winslash="/",mustWork=TRUE)
+work <- file.path(base_dir,output_folder)
+dir.create(work,recursive=TRUE,showWarnings=FALSE)
+for(d in c("data/raw","data/processed","outputs")) dir.create(file.path(work,d),recursive=TRUE,showWarnings=FALSE)
+cfg <- list(event=event_date,start=event_date-window_days,end=event_date+window_days,
+ queries=queries,seed=30202026L,max_thread_requests=250L)
+spec <- list(event=as.character(event_date),days=window_days,queries=queries,timezone="UTC",version="announcement-stage1-v1")
+spec_path <- file.path(work,"study_spec.rds")
+if(file.exists(spec_path) && !identical(readRDS(spec_path),spec)) stop("Settings differ from cached run. Choose a new output_folder.")
+saveRDS(spec,spec_path)
+jsonlite::write_json(spec,file.path(work,"study_spec.json"),auto_unbox=TRUE,pretty=TRUE)
+pipeline_version <- "stage1-v3"
+complete <- file.path(work,"collection_complete_v3.rds")
+# This new folder starts a fresh collection. Later knits reuse this new snapshot.
+# Change output_folder again if another fully fresh snapshot is needed.
+legacy_audit <- file.path(work,"outputs/classification_audit_sample.csv")
+old_audit_ids <- if(file.exists(legacy_audit)) read.csv(legacy_audit)$uri else character()
+language_screen <- function(d) {
+ clean <- gsub("https?://[^[:space:]]+|@[[:alnum:]_.-]+", " ", d$text, perl=TRUE)
+ d$detected_language <- cld3::detect_language(clean)
+ d$language_keep <- !is.na(d$detected_language) & d$detected_language=="en"
+ d$language_decision <- ifelse(d$language_keep,"detected_English",
+   ifelse(is.na(d$detected_language),"uncertain_excluded","non_English_excluded"))
+ d
+}
+need_collect <- mode=="collect" || (mode=="auto" && !file.exists(complete))
+if(!mode %in% c("auto","saved","collect")) stop("mode must be auto, saved or collect")
+if(mode=="saved" && !file.exists(complete)) stop("No completed collection exists. Set mode to auto.")
+asset <- function(p) normalizePath(file.path(work,p),winslash="/",mustWork=TRUE)
+tbl <- function(p,...) knitr::kable(read.csv(asset(p),check.names=FALSE),...)
+fig <- function(p) knitr::include_graphics(asset(p),rel_path=FALSE)
+collection_error <- NULL
+analysis_error <- NULL
+```
+
+```{r api-credentials, include=FALSE, echo=FALSE, results='hide', message=FALSE, warning=FALSE}
+# this chunk is excluded from pdf knitted file and result zip
+
+bsky_handle <- Sys.getenv("BSKY_HANDLE", unset="nhvn.bsky.social")
+bsky_app_password <- Sys.getenv("BSKY_APP_PASSWORD", unset="qn4c-cl75-uqva-dz45")
+pds <- "https://bsky.social"  # Default for Bluesky-hosted accounts.
+if(need_collect) {
+ if(grepl("ENTER_YOUR",bsky_handle)||grepl("ENTER_YOUR",bsky_app_password))
+   stop("Enter your own handle and app password in the hidden api-credentials chunk, or set BSKY_HANDLE and BSKY_APP_PASSWORD locally.")
+ # University authentication workflow. Token cache remains outside the exported ZIP.
+ token <- tryCatch(atrrr::auth(user=bsky_handle,password=bsky_app_password,
+   verbose=FALSE,overwrite=TRUE),error=function(e) stop("Authentication failed. Check your own handle and app password."))
+ # Create an in-memory session for documented XRPC reads through the account PDS.
+ # No authentication response or headers are written to disk or printed.
+ login <- httr::POST(paste0(pds,"/xrpc/com.atproto.server.createSession"),
+   body=list(identifier=bsky_handle,password=bsky_app_password),encode="json",httr::timeout(60))
+ if(httr::status_code(login)!=200L) stop("Unable to create the collection session. Check credentials and PDS host.")
+ session <- httr::content(login,as="parsed",simplifyVector=FALSE)
+ rm(login,token)
+ refresh_session <- function() {
+  rr <- httr::POST(paste0(pds,"/xrpc/com.atproto.server.refreshSession"),
+   httr::add_headers(Authorization=paste("Bearer",session$refreshJwt)),httr::timeout(60))
+  if(httr::status_code(rr)!=200L) stop("Session expired. Knit again to authenticate and resume cached collection.")
+  session <<- httr::content(rr,as="parsed",simplifyVector=FALSE)
+ }
+}
+rm(bsky_app_password,bsky_handle)
+```
+
+```{r collect-data, include=FALSE}
+if(need_collect) {
+ previous_dir <- getwd()
+ tryCatch({
+ setwd(work)
+
+library(httr)
+library(jsonlite)
+assign("%||%", function(x,y) if (is.null(x) || length(x)==0) y else x)
+api <- function(endpoint, query, key) {
+  path <- file.path("data/raw", paste0(key, ".json"))
+  if(file.exists(path)) return(jsonlite::fromJSON(path, simplifyVector=FALSE))
+  for(attempt in 1:5) {
+    r <- tryCatch(httr::GET(paste0(pds, "/xrpc/", endpoint),
+      httr::add_headers(Authorization=paste("Bearer", session$accessJwt),
+        `atproto-proxy`="did:web:api.bsky.app#bsky_appview"),
+      query=query, httr::timeout(90)), error=function(e) NULL)
+    code <- if(is.null(r)) 0L else httr::status_code(r)
+    if(code==200L) {
+      value <- httr::content(r, as="text", encoding="UTF-8")
+      writeLines(value,path,useBytes=TRUE)
+      jsonlite::write_json(list(endpoint=endpoint,query=query,status=code,
+        collected_at=format(Sys.time(),tz="UTC",usetz=TRUE)),
+        sub(".json$",".meta.json",path),auto_unbox=TRUE,pretty=TRUE)
+      Sys.sleep(.2)
+      return(jsonlite::fromJSON(value,simplifyVector=FALSE))
+    }
+    if(code==401L) refresh_session()
+    if(code %in% c(400L,403L,404L)) stop("API HTTP ",code," at ",endpoint,
+      ". Check account access and endpoint availability; no failed request is counted as zero.")
+    delay <- if(is.null(r)) NA_real_ else suppressWarnings(as.numeric(httr::headers(r)[["retry-after"]]))
+    if(!length(delay)||!is.finite(delay)) delay <- 2^attempt
+    Sys.sleep(min(delay,60))
+  }
+  stop("API request failed after retries at ",endpoint)
+}
+flatten_post <- function(p) {
+  data.frame(uri = p$uri, cid = p$cid %||% "", did = p$author$did,
+    handle = p$author$handle, text = p$record$text %||% "",
+    created_at = p$record$createdAt, indexed_at = p$indexedAt %||% "",
+    reply_count = p$replyCount %||% 0L, like_count = p$likeCount %||% 0L,
+    repost_count = p$repostCount %||% 0L, quote_count = p$quoteCount %||% 0L,
+    language = paste(unlist(p$record$langs), collapse = "|"),
+    parent_uri = p$record$reply$parent$uri %||% "",
+    root_uri = p$record$reply$root$uri %||% "", stringsAsFactors = FALSE)
+}
+posts_list <- list()
+coverage <- list()
+# Recursively subdivide near-cap intervals. At the minimum interval, follow cursors.
+collect_interval <- function(start, end, qi, depth = 0L) {
+  iso <- function(x) format(x, "%Y-%m-%dT%H:%M:%SZ", tz="UTC")
+  key <- paste0("interval_", format(start,"%Y%m%dT%H%M%S",tz="UTC"),
+    "_", format(end,"%Y%m%dT%H%M%S",tz="UTC"), "_q",qi)
+  response <- api("app.bsky.feed.searchPosts",
+    list(q=cfg$queries[qi],sort="latest",lang="en",since=iso(start),
+         until=iso(end),limit=100L),key)
+  batch <- response$posts %||% list()
+  if (length(batch)>=90L && as.numeric(difftime(end,start,units="secs"))>60) {
+    midpoint <- start + as.numeric(difftime(end,start,units="secs"))/2
+    collect_interval(start,midpoint,qi,depth+1L)
+    collect_interval(midpoint,end,qi,depth+1L)
+  } else {
+    cursor <- response$cursor
+    seen <- character()
+    if(length(batch)>=90L) {
+      while(!is.null(cursor) && !cursor %in% seen) {
+        seen <- c(seen,cursor)
+        if(length(seen)>100L) stop("Search pagination safety limit reached; narrow queries.")
+        more <- api("app.bsky.feed.searchPosts",
+          list(q=cfg$queries[qi],sort="latest",lang="en",since=iso(start),
+               until=iso(end),limit=100L,cursor=cursor),paste0(key,"_p",length(seen)))
+        batch <- c(batch,more$posts %||% list())
+        cursor <- more$cursor
+      }
+    }
+    posts_list <<- c(posts_list,lapply(batch,flatten_post))
+    coverage[[length(coverage)+1L]] <<- data.frame(start=iso(start),end=iso(end),
+      query=cfg$queries[qi],retrieved=length(batch),near_cap=!is.null(cursor),
+      cursor_returned=!is.null(response$cursor),depth=depth)
+  }
+}
+for (day in seq(cfg$start,cfg$end-1,by="day")) {
+  day <- as.Date(day,origin="1970-01-01")
+  for (qi in seq_along(cfg$queries)) {
+    collect_interval(as.POSIXct(day,tz="UTC"),as.POSIXct(day+1,tz="UTC"),qi)
+    cat(as.character(day),qi,"retained rows so far",length(posts_list),"\n")
+    flush.console()
+  }
+}
+if(!length(posts_list)) stop("No posts returned for the chosen window and queries.")
+raw_posts <- do.call(rbind, posts_list)
+posts <- raw_posts[!duplicated(raw_posts$uri), ]
+stamp <- as.POSIXct(posts$created_at, format = "%Y-%m-%dT%H:%M:%OS", tz = "UTC")
+topic <- grepl("\\biphone[[:space:]]*(duo|fold)\\b|\\bfoldable[[:space:]]+iphone\\b", posts$text, ignore.case = TRUE, perl = TRUE)
+posts <- posts[topic & !is.na(stamp) & as.Date(stamp, tz = "UTC") >= cfg$start &
+               as.Date(stamp, tz = "UTC") < cfg$end, ]
+posts <- posts[order(posts$created_at, posts$uri), ]
+posts <- language_screen(posts)
+write.csv(posts,"data/processed/posts_language_screen.csv",row.names=FALSE,fileEncoding="UTF-8")
+posts <- posts[posts$language_keep,]
+
+write.csv(posts, "data/processed/posts.csv", row.names = FALSE, fileEncoding = "UTF-8")
+write.csv(do.call(rbind, coverage), "data/processed/search_coverage.csv", row.names = FALSE)
+write.csv(data.frame(retrieved=nrow(raw_posts), unique=sum(!duplicated(raw_posts$uri)),
+  retained=nrow(posts)), "data/processed/collection_counts.csv", row.names = FALSE)
+if(nrow(posts)<500) stop("Fewer than 500 eligible posts. Inspect coverage and revise the collection design before submission.")
+roots <- posts[posts$parent_uri=="",]
+if(nrow(roots)<3) stop("Fewer than three root posts available.")
+top <- head(roots[order(-roots$reply_count, -roots$like_count, roots$uri), ], 3)
+top$thread <- paste0("T",seq_len(nrow(top)))
+top$url <- paste0("https://bsky.app/profile/",top$did,"/post/",sub(".*/","",top$uri))
+write.csv(top,"data/processed/top_threads.csv",row.names=FALSE,fileEncoding="UTF-8")
+replies <- list()
+thread_log <- list()
+for (i in seq_len(nrow(top))) {
+  queue <- top$uri[i]
+  visited <- character()
+  local_posts <- list()
+  blocked <- 0L
+  requests <- 0L
+  walk <- function(node) {
+    if (is.null(node$post)) { blocked <<- blocked+1L; return(invisible(NULL)) }
+    p <- node$post
+    if (p$uri != top$uri[i]) local_posts[[p$uri]] <<- flatten_post(p)
+    children <- node$replies %||% list()
+    if ((p$replyCount %||% 0L)>length(children) && !p$uri %in% visited)
+      queue <<- unique(c(queue,p$uri))
+    for (child in children) walk(child)
+  }
+  while (length(queue) && requests < cfg$max_thread_requests) {
+    uri <- queue[1]
+    queue <- queue[-1]
+    if (uri %in% visited) next
+    visited <- c(visited,uri)
+    requests <- requests+1L
+    res <- api("app.bsky.feed.getPostThread",
+      list(uri=uri,depth=100L,parentHeight=0L),
+      paste0("thread_v2_",gsub("[^A-Za-z0-9]","_",top$uri[i]),"_",gsub("[^A-Za-z0-9]","_",uri)))
+    walk(res$thread)
+  }
+  if (length(local_posts)) {
+    frame <- do.call(rbind,local_posts)
+    frame$thread <- paste0("T",i)
+    replies[[i]] <- frame
+  }
+  thread_log[[i]] <- data.frame(thread=paste0("T",i),retrieved_replies=length(local_posts),
+    advertised_root_reply_count=top$reply_count[i],requests=requests,
+    unavailable_nodes=blocked,pending_branches=length(queue))
+}
+write.csv(do.call(rbind,replies),"data/processed/replies.csv",row.names=FALSE,fileEncoding="UTF-8")
+write.csv(do.call(rbind,thread_log),"data/processed/thread_coverage.csv",row.names=FALSE)
+activity <- sort(table(posts$did),decreasing=TRUE)
+seeds <- data.frame(did=names(activity)[1:3],topic_posts=as.integer(activity[1:3]))
+seeds$handle <- posts$handle[match(seeds$did,posts$did)]
+write.csv(seeds,"data/processed/seeds.csv",row.names=FALSE)
+edges <- list()
+actors <- list()
+network_log <- list()
+for (i in seq_len(nrow(seeds))) {
+  actors[[seeds$did[i]]] <- data.frame(did=seeds$did[i],handle=seeds$handle[i])
+  for (kind in c("followers","follows")) {
+    endpoint <- if(kind=="followers") "app.bsky.graph.getFollowers" else "app.bsky.graph.getFollows"
+    res <- tryCatch(api(endpoint,list(actor=seeds$did[i],limit=50L),
+      paste0("network_v2_",gsub("[^A-Za-z0-9]","_",seeds$did[i]),"_",kind)),error=identity)
+    if(inherits(res,"error")) {
+      network_log[[length(network_log)+1L]] <- data.frame(seed=seeds$handle[i],
+        kind=kind,retrieved=0L,more=NA,status=conditionMessage(res))
+      next
+    }
+    nodes <- res[[kind]] %||% list()
+    cursor <- res$cursor
+    page <- 1L
+    page_error <- ""
+    while(length(nodes)<50L && !is.null(cursor) && page<10L) {
+      page <- page+1L
+      next_page <- tryCatch(api(endpoint,
+        list(actor=seeds$did[i],limit=50L,cursor=cursor),
+        paste0("network_v2_",gsub("[^A-Za-z0-9]","_",seeds$did[i]),"_",kind,"_p",page)),error=identity)
+      if(inherits(next_page,"error")) {
+        page_error <- conditionMessage(next_page)
+        break
+      }
+      nodes <- c(nodes,next_page[[kind]] %||% list())
+      nodes <- nodes[!duplicated(vapply(nodes,function(x)x$did,character(1)))]
+      if(identical(cursor,next_page$cursor)) break
+      cursor <- next_page$cursor
+    }
+    nodes <- head(nodes,50)
+    for(node in nodes) {
+      actors[[node$did]] <- data.frame(did=node$did,handle=node$handle)
+      edges[[length(edges)+1L]] <- data.frame(
+        from=if(kind=="followers") node$did else seeds$did[i],
+        to=if(kind=="followers") seeds$did[i] else node$did)
+    }
+    network_log[[length(network_log)+1L]] <- data.frame(seed=seeds$handle[i],
+      kind=kind,retrieved=length(nodes),more=!is.null(cursor),status=if(nzchar(page_error)) page_error else "OK")
+  }
+}
+if(!length(edges)) stop("No network edges retrieved; inspect network access.")
+write.csv(unique(do.call(rbind,edges)),"data/processed/edges.csv",row.names=FALSE)
+write.csv(do.call(rbind,actors),"data/processed/nodes.csv",row.names=FALSE)
+write.csv(do.call(rbind,network_log),"data/processed/network_coverage.csv",row.names=FALSE)
+cat("Saved",nrow(posts),"posts and",sum(vapply(replies,nrow,integer(1))),"replies.\n")
+
+ saveRDS(list(completed_at=as.character(Sys.time())),complete)
+ },error=function(e) {collection_error <<- conditionMessage(e)},finally=setwd(previous_dir))
+}
+```
+
+```{r analyse-data, include=FALSE}
+if(is.null(collection_error)) {
+ previous_dir <- getwd()
+ tryCatch({
+ setwd(work)
+
+library(jsonlite)
+library(tm)
+library(igraph)
+library(cluster)
+set.seed(cfg$seed)
+read_data <- function(name) read.csv(paste0("data/processed/", name, ".csv"),
+  stringsAsFactors = FALSE, check.names = FALSE, fileEncoding = "UTF-8")
+save_table <- function(x, name) write.csv(x, paste0("outputs/", name, ".csv"),
+  row.names = FALSE, fileEncoding = "UTF-8")
+posts <- read_data("posts")
+posts <- posts[order(posts$created_at,posts$uri),]
+posts$date <- as.Date(substr(posts$created_at, 1, 10))
+posts$period <- factor(ifelse(posts$date < cfg$event, "Before", "After"),
+                      levels = c("Before", "After"))
+# Classification concerns the foldable iPhone, not any amount in its post.
+# Conservative clause-level attribution; ambiguous cases are explicitly queued.
+price_label <- function(text) {
+ text <- tolower(gsub("https?://[^[:space:]]+", " ", text, perl=TRUE))
+ clauses <- unlist(strsplit(text,"(?<=[.!?;])\\s+|[\\r\\n]+",perl=TRUE))
+ target <- "\\biphone\\s*(duo|fold)\\b|\\bfoldable\\s+iphone\\b"
+ cue <- "\\b(pric(e[sd]?|ing)|cost(s|ly)?|expensive|cheap(er|est)?|afford(able|ability)?|unaffordable|overpriced|financing|instalments?|installments?|monthly payments?|value for money|worth (it|the price))\\b|[$£€]\\s*[0-9]"
+ unrelated <- "\\b(polymarket|prediction.market|price target|stock|shares?|funding|fundrais[a-z]*|roi|market cap|valuation)\\b"
+ other <- "\\b(iphone\\s*[0-9]*\\s*(pro|max|air)|airpods|apple watch|galaxy|samsung|xiaomi)\\b"
+ direct <- paste0("(",target,")\\s+(?:(?:will|reportedly|is|expected|to|could|may|be)\\s+){0,6}(starts? (at|from)|begins? at|costs?|priced? (at|from)|[$£€]\\s*[0-9])")
+ has <- function(pattern,x) grepl(pattern,x,perl=TRUE)
+ t <- has(target,clauses); c <- has(cue,clauses)
+ near <- has(paste0("(",target,").{0,140}(",cue,")|(",cue,").{0,140}(",target,")"),clauses)
+ competing <- has(unrelated,clauses) | (has(other,clauses) & !has(direct,clauses))
+ positive <- any(t & c & near & !competing)
+ ambiguous <- any(c) && (!positive || any(t & c & competing))
+ reason <- if(positive) "target_price_same_clause" else if(any(t & c & competing))
+   "competing_financial_or_product_context" else if(any(c)) "price_not_clearly_attributed_to_target" else "no_price_cue"
+ list(label=positive,review=ambiguous,reason=reason)
+}
+classified <- lapply(posts$text,price_label)
+posts$rule_label <- vapply(classified,`[[`,logical(1),"label")
+posts$needs_context_review <- vapply(classified,`[[`,logical(1),"review")
+posts$classification_reason <- vapply(classified,`[[`,character(1),"reason")
+posts$subtopic <- posts$rule_label
+# Do not silently claim that dictionary labels have been validated.
+# An optional manual override file applies ONLY explicit labels for matching URIs.
+override_path <- file.path(work,"manual_price_overrides.csv")
+if(file.exists(override_path)) {
+ overrides <- read.csv(override_path,stringsAsFactors=FALSE)
+ stopifnot(all(c("uri","label","reason") %in% names(overrides)),!anyDuplicated(overrides$uri))
+ valid <- !is.na(overrides$label)
+ if(any(!overrides$label[valid] %in% c(0,1))) stop("Override labels must be 0 or 1.")
+ j <- match(posts$uri,overrides$uri)
+ apply <- !is.na(j) & !is.na(overrides$label[j])
+ posts$subtopic[apply] <- as.logical(overrides$label[j[apply]])
+ posts$classification_reason[apply] <- "manual_override"
+}
+review_queue <- posts[posts$needs_context_review,c("uri","text","period","rule_label","classification_reason")]
+save_table(review_queue,"price_context_review_queue")
+# New stratified validation sample excludes examples used in the first audit.
+# The label sheet deliberately omits predictions to reduce reviewer anchoring.
+validation_path <- file.path(work,"validation_labels.csv")
+validation_key <- file.path(work,"validation_key.rds")
+if(!file.exists(validation_path) || !file.exists(validation_key)) {
+ set.seed(cfg$seed+202L)
+ pool <- posts[!posts$uri %in% old_audit_ids,]
+ groups <- split(pool,interaction(pool$period,pool$rule_label),drop=TRUE)
+ selected <- do.call(rbind,lapply(groups,function(d) d[sample.int(nrow(d),min(20L,nrow(d))),]))
+ key <- selected[,c("uri","period","rule_label")]
+ stratum_pool <- interaction(pool$period,pool$rule_label,drop=TRUE)
+ stratum_sample <- interaction(key$period,key$rule_label,drop=TRUE)
+ key$weight <- as.numeric(table(stratum_pool)[as.character(stratum_sample)])/as.numeric(table(stratum_sample)[as.character(stratum_sample)])
+ saveRDS(key,validation_key)
+ sheet <- selected[,c("uri","text","period")]
+ sheet$manual_label <- NA_integer_; sheet$review_notes <- ""
+ write.csv(sheet,validation_path,row.names=FALSE,fileEncoding="UTF-8")
+}
+validation <- read.csv(validation_path,stringsAsFactors=FALSE)
+if(anyDuplicated(validation$uri) || !all(validation$uri %in% posts$uri))
+ stop("Validation sheet does not match this corpus. Archive it and its key before regenerating the sample.")
+known <- !is.na(validation$manual_label)
+if(any(!validation$manual_label[known] %in% c(0,1))) stop("Manual labels must be 0 or 1; blank means not reviewed.")
+validation_complete <- nrow(validation)>0 && all(known)
+validation_summary <- data.frame(sample_n=nrow(validation),reviewed=sum(known),complete=validation_complete)
+save_table(validation_summary,"validation_status")
+if(any(known)) {
+ j <- match(validation$uri[known],posts$uri)
+ agreement <- data.frame(period=validation$period[known],predicted=posts$rule_label[j],
+   manual=validation$manual_label[known])
+ save_table(as.data.frame(table(agreement)),"validation_stratum_counts")
+}
+# Weighted estimates require ALL sampled labels because sampling is stratified.
+if(validation_complete) {
+ key <- readRDS(validation_key)
+ stratum_all <- interaction(posts$period,posts$rule_label,drop=TRUE)
+ stratum_sample <- interaction(key$period,key$rule_label,drop=TRUE)
+ weight <- key$weight
+ gold <- validation$manual_label[match(key$uri,validation$uri)]
+ pred <- as.integer(key$rule_label)
+ tp <- sum(weight*(pred==1 & gold==1)); fp <- sum(weight*(pred==1 & gold==0))
+ fn <- sum(weight*(pred==0 & gold==1)); tn <- sum(weight*(pred==0 & gold==0))
+ save_table(data.frame(weighted_precision=if(tp+fp)tp/(tp+fp) else NA,
+ weighted_recall=if(tp+fn)tp/(tp+fn) else NA,weighted_accuracy=(tp+tn)/(tp+fp+fn+tn)),"validation_metrics")
+}
+save_table(posts, "posts_classified")
+tab <- table(posts$period, factor(posts$subtopic, levels = c(FALSE, TRUE),
+                                  labels = c("No subtopic", "Pricing")))
+if(any(rowSums(tab)==0)||any(colSums(tab)==0)) stop("Both periods and both subtopic categories are required for the chi-square comparison.")
+chi <- chisq.test(tab, correct = FALSE)
+set.seed(cfg$seed)
+chi_mc <- chisq.test(tab, simulate.p.value = TRUE, B = 9999)
+n_before <- sum(tab[1, ])
+n_after <- sum(tab[2, ])
+p_before <- tab[1,2] / n_before
+p_after <- tab[2,2] / n_after
+expected_after <- c(n_after * (1-p_before), n_after * p_before)
+twitter <- if (all(expected_after > 0)) sum((tab[2, ]-expected_after)^2/expected_after) else NA_real_
+unique_authors <- posts[!duplicated(posts$did), ]
+author_chi <- chisq.test(table(unique_authors$period,
+  factor(unique_authors$subtopic, levels = c(FALSE,TRUE))), correct = FALSE)
+unique_text <- posts[!duplicated(tolower(trimws(posts$text))), ]
+text_chi <- chisq.test(table(unique_text$period,
+  factor(unique_text$subtopic, levels = c(FALSE,TRUE))), correct = FALSE)
+save_table(as.data.frame.matrix(tab), "contingency_counts")
+daily <- data.frame(date = seq(cfg$start, cfg$end - 1, by = "day"))
+daily$count <- as.integer(table(factor(posts$date, levels = daily$date)))
+daily$day <- seq_len(nrow(daily)) - 1
+fit <- lm(count ~ day, data = daily)
+save_table(daily, "daily_counts")
+png("outputs/daily_counts.png",width=1500,height=850,res=160)
+par(mar=c(4.4,4.8,2,1), family="sans")
+plot(daily$date,daily$count,pch=19,col="#137E80",cex=1.3,
+     xlab="Date (UTC)",ylab="Retrieved topic posts")
+lines(daily$date,predict(fit),col="#C46834",lwd=3)
+abline(v=as.numeric(cfg$event),lty=2,col="#7C8798")
+legend("topright",c("Observed daily count","Linear fit","Announcement"),
+       pch=c(19,NA,NA),lty=c(NA,1,2),col=c("#137E80","#C46834","#7C8798"),bty="n")
+dev.off()
+png("outputs/regression_diagnostics.png",width=1400,height=650,res=150)
+par(mfrow=c(1,2))
+plot(fit,which=1)
+plot(fit,which=2)
+dev.off()
+# A stratified sample is saved for transparent manual checking.
+audit <- do.call(rbind,lapply(split(posts,interaction(posts$period,posts$subtopic)),
+ function(d) d[sample.int(nrow(d),min(10L,nrow(d))),c("uri","text","period","subtopic")]))
+save_table(audit,"classification_audit_sample")
+replies <- read_data("replies")
+replies <- replies[!duplicated(replies$uri),]
+replies <- language_screen(replies)
+replies$eligible <- replies$language_keep
+save_table(replies,"replies_language_screen")
+comments <- replies[replies$eligible,]
+clean_text <- function(x) {
+ x <- tolower(x)
+ x <- gsub("https?://[^[:space:]]+|www\\.[^[:space:]]+"," ",x,perl=TRUE)
+ x <- gsub("@[[:alnum:]_.-]+"," ",x,perl=TRUE)
+ x <- gsub("[^a-z'[:space:]]"," ",x)
+ x <- gsub("'","",x,fixed=TRUE)
+ x
+}
+custom_stop <- c("iphone","duo","iphoneduo")
+stop_words <- setdiff(unique(c(tm::stopwords("en"),custom_stop)),c("no","not","nor"))
+corpus <- VCorpus(VectorSource(clean_text(comments$text)))
+corpus <- tm_map(corpus,removeWords,stop_words)
+corpus <- tm_map(corpus,stripWhitespace)
+dtm <- as.matrix(DocumentTermMatrix(corpus,control=list(wordLengths=c(2,Inf))))
+top_terms <- do.call(rbind,lapply(sort(unique(comments$thread)),function(th) {
+ freq <- sort(colSums(dtm[comments$thread==th,,drop=FALSE]),decreasing=TRUE)
+ freq <- head(freq[freq>0],15)
+ if(!length(freq)) return(NULL)
+ data.frame(thread=th,term=names(freq),frequency=as.integer(freq))
+}))
+save_table(top_terms,"top15_terms")
+png("outputs/thread_terms.png",width=1800,height=1050,res=160)
+par(mfrow=c(1,3),mar=c(4,7,3,1))
+for(th in c("T1","T2","T3")) {
+ d<-top_terms[top_terms$thread==th,]
+ barplot(rev(d$frequency),names.arg=rev(d$term),horiz=TRUE,las=1,
+ col="#137E80",border=NA,main=th,xlab="Token frequency")
+}
+dev.off()
+df <- colSums(dtm>0)
+counts <- dtm[,df>=2,drop=FALSE]
+idf <- log(nrow(counts)/colSums(counts>0))
+weighted <- sweep(log1p(counts),2,idf,"*")
+norms <- sqrt(rowSums(weighted^2))
+nonzero <- norms>0
+X <- weighted[nonzero,,drop=FALSE]/norms[nonzero]
+cluster_comments <- comments[nonzero,]
+distance <- dist(X)
+kmax <- min(10L,nrow(unique(X))-1L,nrow(X)-1L)
+if(!is.finite(kmax)||kmax<3) stop("Insufficient distinct nonzero replies for clustering. Inspect reply coverage; do not invent clusters.")
+models <- lapply(seq_len(kmax),function(k) {
+ set.seed(cfg$seed+k)
+ kmeans(X,centers=k,nstart=50,iter.max=100)
+})
+wss <- vapply(models,function(m)m$tot.withinss,numeric(1))
+x_norm <- (seq_len(kmax)-1)/(kmax-1)
+y_norm <- (wss-min(wss))/(max(wss)-min(wss))
+gap <- (1-x_norm)-y_norm
+chosen_k <- which.max(replace(gap,c(1,kmax),-Inf))
+sil <- c(NA,vapply(2:kmax,function(k)
+ mean(silhouette(models[[k]]$cluster,distance)[,3]),numeric(1)))
+kgrid <- data.frame(k=seq_len(kmax),WSS=wss,BSS=vapply(models,function(m)m$betweenss,numeric(1)),
+ SST=vapply(models,function(m)m$totss,numeric(1)),elbow_gap=gap,silhouette=sil)
+save_table(kgrid,"cluster_selection")
+model <- models[[chosen_k]]
+cluster_comments$cluster <- model$cluster
+save_table(cluster_comments,"cluster_assignments")
+png("outputs/cluster_selection.png",width=1500,height=650,res=160)
+par(mfrow=c(1,2),mar=c(4,4,2,1))
+plot(kgrid$k,kgrid$WSS,type="b",pch=19,col="#137E80",xlab="Number of clusters k",ylab="Within-cluster sum of squares")
+abline(v=chosen_k,lty=2,col="#C46834")
+plot(kgrid$k,kgrid$silhouette,type="b",pch=19,col="#137E80",xlab="Number of clusters k",ylab="Mean silhouette")
+abline(v=chosen_k,lty=2,col="#C46834")
+dev.off()
+embedding <- cmdscale(distance,k=2,eig=TRUE)
+palette <- c("#127F82","#DA713F","#6357A5","#C44465","#A08222","#3475B8","#5B8C3C","#905A49","#606E7A","#C03B27")
+png("outputs/clusters_2d.png",width=1400,height=1000,res=160)
+par(mar=c(4,4,1,1))
+plot(embedding$points,col=palette[model$cluster],
+ pch=c(T1=16,T2=17,T3=15)[cluster_comments$thread],
+ xlab="MDS dimension 1",ylab="MDS dimension 2",cex=1.2)
+legend("topright",paste("Cluster",seq_len(chosen_k)),col=palette[seq_len(chosen_k)],pch=19,bty="n")
+legend("bottomright",c("Thread 1","Thread 2","Thread 3"),pch=c(16,17,15),bty="n")
+dev.off()
+cross <- table(cluster_comments$cluster,factor(cluster_comments$thread,levels=c("T1","T2","T3")))
+save_table(data.frame(cluster=rownames(cross),as.data.frame.matrix(cross)),"cluster_thread_table")
+cluster_terms <- do.call(rbind,lapply(seq_len(chosen_k),function(k) {
+ means <- sort(colMeans(X[model$cluster==k,,drop=FALSE]),decreasing=TRUE)
+ data.frame(cluster=k,term=names(head(means[means>0],10)),mean_weight=head(means[means>0],10))
+}))
+save_table(cluster_terms,"cluster_terms")
+choose2 <- function(x) x*(x-1)/2
+index <- sum(choose2(cross))
+expected <- sum(choose2(rowSums(cross)))*sum(choose2(colSums(cross)))/choose2(sum(cross))
+maximum <- (sum(choose2(rowSums(cross)))+sum(choose2(colSums(cross))))/2
+ari <- (index-expected)/(maximum-expected)
+edges <- read_data("edges")
+nodes <- read_data("nodes")
+seeds <- read_data("seeds")
+g <- simplify(graph_from_data_frame(edges,directed=TRUE,vertices=nodes),
+              remove.multiple=TRUE,remove.loops=TRUE)
+central <- data.frame(did=V(g)$name,handle=V(g)$handle,
+ in_degree=as.integer(degree(g,mode="in")),
+ out_degree=as.integer(degree(g,mode="out")),
+ pagerank=as.numeric(page_rank(g,directed=TRUE,damping=.85)$vector))
+central$total_degree <- central$in_degree+central$out_degree
+central <- central[order(-central$pagerank,central$handle),]
+save_table(central,"centrality")
+png("outputs/network.png",width=1500,height=1100,res=160)
+set.seed(cfg$seed)
+layout <- layout_with_fr(g,weights=NA)
+is_seed <- V(g)$name %in% seeds$did
+plot(g,layout=layout,vertex.size=ifelse(is_seed,9,3),
+ vertex.color=ifelse(is_seed,"#C46834","#137E80"),
+ vertex.frame.color=NA,vertex.label=ifelse(is_seed,V(g)$handle,NA),
+ vertex.label.cex=.7,vertex.label.color="#182B42",
+ edge.arrow.size=.22,edge.width=.7,edge.color="#A5ADB780",
+ main="Observed follows network: follower -> followed account")
+dev.off()
+stats <- list(n_posts=nrow(posts),n_authors=length(unique(posts$did)),
+ n_before=n_before,n_after=n_after,pricing_before=tab[1,2],pricing_after=tab[2,2],
+ proportion_before=p_before,proportion_after=p_after,
+ difference_pp=100*(p_after-p_before),chi=unname(chi$statistic),p=chi$p.value,
+ expected_min=min(chi$expected),p_monte_carlo=chi_mc$p.value,
+ cramers_v=sqrt(unname(chi$statistic)/sum(tab)),twitter_score=twitter,
+ one_author_n=nrow(unique_authors),one_author_p=author_chi$p.value,
+ unique_text_n=nrow(unique_text),unique_text_p=text_chi$p.value,
+ slope=unname(coef(fit)[2]),slope_ci=unname(confint(fit)[2,]),
+ slope_p=summary(fit)$coefficients[2,4],r_squared=summary(fit)$r.squared,
+ peak_date=as.character(daily$date[which.max(daily$count)]),peak_count=max(daily$count),
+ replies_total=nrow(replies),eligible_replies=nrow(comments),
+ excluded_language=sum(!replies$eligible),zero_vectors=sum(!nonzero),
+ vocabulary=ncol(X),cluster_n=nrow(X),k=chosen_k,
+ mean_silhouette=sil[chosen_k],best_silhouette_k=which.max(replace(sil,is.na(sil),-Inf)),
+ mds_gof=embedding$GOF[2],ari=ari,cluster_sizes=unname(model$size),
+ network_nodes=vcount(g),network_edges=ecount(g),components=components(g,mode="weak")$no)
+write_json(stats,"outputs/statistics.json",pretty=TRUE,auto_unbox=TRUE)
+saveRDS(list(posts=posts,table=tab,chi=chi,fit=fit,daily=daily,comments=comments,
+ X=X,model=model,kgrid=kgrid,cross=cross,centrality=central,stats=stats),
+ "outputs/analysis.rds")
+writeLines(capture.output(sessionInfo()),"outputs/sessionInfo.txt")
+cat(toJSON(stats,pretty=TRUE,auto_unbox=TRUE),"\n")
+
+# Seven-day sensitivity uses exactly the same queries and classification rules.
+sensitivity <- do.call(rbind,lapply(c(7L,14L),function(w) {
+ d <- posts[posts$date>=cfg$event-w & posts$date<cfg$event+w,]
+ t <- table(factor(d$period,levels=c("Before","After")),factor(d$subtopic,levels=c(FALSE,TRUE)))
+ ok <- all(rowSums(t)>0) && all(colSums(t)>0)
+ test <- if(ok) suppressWarnings(chisq.test(t,correct=FALSE)) else NULL
+ data.frame(days_each_side=w,before_n=sum(t[1,]),after_n=sum(t[2,]),
+ before_share=if(sum(t[1,]))t[1,2]/sum(t[1,]) else NA,
+ after_share=if(sum(t[2,]))t[2,2]/sum(t[2,]) else NA,
+ chi_square=if(ok)unname(test$statistic) else NA,p=if(ok)test$p.value else NA)
+}))
+save_table(sensitivity,"window_sensitivity")
+audit$manual_label <- NA_integer_
+audit$review_notes <- ""
+save_table(audit,"classification_manual_review")
+
+ },error=function(e) {analysis_error <<- conditionMessage(e)},finally=setwd(previous_dir))
+}
+analysis_ok <- is.null(collection_error) && is.null(analysis_error)
+if(analysis_ok) { a <- readRDS(asset("outputs/analysis.rds")); s <- a$stats }
+```
+
+\newpage
+
+# Study design
+
+This study examines public Bluesky discussion around the iPhone Duo announcement on **9 September 2026** [@apple2026]. The focus is **price and affordability**, including quoted prices, perceived expense, ability to afford the device, payment burdens and value for money. The research compares the share of relevant posts before and after the announcement, describes daily discussion volume, examines replies to highly discussed posts, and maps a local follows network [@wsu2026].
+
+The observation periods are **26 August–8 September 2026** and **9–22 September 2026**, defined using UTC creation dates. The event day belongs to the after period; posts earlier than the announcement time on that date are consequently included there. This is a calendar-day comparison rather than an exact-time causal design.
+
+## Window rationale
+
+Collective attention often exhibits rapid growth and decline, supporting an event-focused observation period [@lorenz2019]. Fourteen days on each side is a design choice, not a duration prescribed by that paper. It provides two complete weekly cycles per period and limits overlap with more distant events. Seven-day windows provide a sensitivity check. Neither design removes concurrent news, anticipation, or selection bias.
+
+## Collection and reproducibility
+
+Authenticated read requests follow the account/app-password workflow in the university authentication guide. Search includes the official name and common foldable-iPhone aliases, with an English language request, a second literal relevance check, and independent text-language detection. Ambiguous “iPhone Ultra” searches are excluded. The same rules apply in both periods. Search uses smaller intervals near result caps and cursor pagination where necessary; response and coverage logs are saved. API errors are never treated as zero posts.
+
+The study retains unique post URIs and creation timestamps. Raw responses are cached, so later knits reproduce the same collection. Only posts detected as English by CLD3 are retained [@cld3]; uncertain and non-English classifications are exported for review. Detection can misclassify short or mixed-language text. Search indexing may be incomplete. Search coverage is not a guarantee of all platform posts. Engagement counts, replies and follow relationships are observations at collection time, not historical snapshots of the announcement day [@bluesky2026].
+
+```{r run-status, results='asis'}
+if(!analysis_ok) {
+ cat("**Run incomplete.** ",if(!is.null(collection_error)) collection_error else analysis_error,
+ "\n\nAvailable diagnostic outputs have been exported. No missing results are imputed. Correct the reported issue before submission.\n",sep="")
+} else {
+ knitr::kable(data.frame(Posts=s$n_posts,Authors=s$n_authors,Before=s$n_before,After=s$n_after),caption="Retained study sample.") |> print()
+}
+```
+
+# Question 1: Price, affordability and temporal trends
+
+## Q1(a): Subtopic classification
+
+A clause-level rule requires a price or affordability expression near an explicit reference to the foldable iPhone. Financial-market and funding contexts are excluded; competing product mentions require clearer attribution. Generic purchase language alone does not qualify. Ambiguous cases are exported for contextual review, and explicit manual overrides can be supplied. These conservative rules can miss implicit or cross-sentence references; they remain provisional until validated.
+
+A new validation sample contains up to twenty posts from each period-by-prediction stratum, excluding examples used in the earlier audit. The separate label sheet hides predictions. Fill `manual_label` with 1 for target-device price/affordability, 0 otherwise, and record reasons. Complete labels enable weighted precision and recall for the eligible validation population (excluding the earlier audit cases); unequal stratum sampling is accounted for. Labels are an evaluation set, not automatically applied as corrections. If rules are revised using this sample, it becomes development data and a fresh independent evaluation sample is required.
+
+```{r validation-status, eval=analysis_ok}
+tbl("outputs/validation_status.csv",caption="Independent classification review status.")
+if(file.exists(file.path(work,"outputs/validation_metrics.csv")) && validation_complete)
+ tbl("outputs/validation_metrics.csv",digits=4)
+```
+
+```{r q1a, eval=analysis_ok}
+knitr::kable(data.frame(Period=rownames(a$table),Other=as.integer(a$table[,1]),
+ Price_affordability=as.integer(a$table[,2]),Total=rowSums(a$table),
+ Share=a$table[,2]/rowSums(a$table)),digits=4,caption="Subtopic counts and proportions.")
+```
+
+*Interpretation pending review of the collected posts and classification audit.*
+
+## Q1(b): Pearson chi-square test
+
+The null hypothesis is independence between period and subtopic status. The alternative is an association. The test uses $E_{ij}=R_iC_j/N$ and $\chi^2=\sum (O_{ij}-E_{ij})^2/E_{ij}$, without Yates' correction [@rchi2026]. Cramér's $V=\sqrt{\chi^2/n}$ describes effect magnitude for this two-by-two table. A non-significant result does not prove equality.
+
+```{r q1b, eval=analysis_ok}
+knitr::kable(a$chi$expected,digits=2,caption="Expected counts.")
+knitr::kable(data.frame(Chi_square=s$chi,p_value=s$p,Cramers_V=s$cramers_v,
+ Minimum_expected=s$expected_min,Monte_Carlo_p=s$p_monte_carlo),digits=5)
+```
+
+*Interpretation pending. Check expected counts and account-level dependence before evaluating significance.*
+
+## Q1(c): Twitter-style chi-square score
+
+Module 9 treats historical frequencies as expected values. To accommodate unequal period totals, let $p_B=X/N_B$, $E_A=N_Ap_B$, and compute $$
+S_T=\frac{(Y-E_A)^2}{E_A}+\frac{(N_A-Y-N_A(1-p_B))^2}{N_A(1-p_B)}.
+$$ This reduces to the lecture formula when the period totals are equal. Pearson estimates expected proportions jointly; this historical-baseline score treats the estimated before proportion as fixed and omits its estimation uncertainty. It is not Yates' correction [@wsumodules2026].
+
+```{r q1c, eval=analysis_ok}
+knitr::kable(data.frame(Pearson=s$chi,Twitter_style=s$twitter_score),digits=5)
+```
+
+## Q1(d): Daily linear regression
+
+For the 28 daily observations, fit $Y_t=\alpha+\beta t+\varepsilon_t$, where $t=0$ on the first observation day. All calendar days are represented. A zero is assigned only within a successfully completed collection.
+
+```{r q1d-plot, eval=analysis_ok, fig.cap='Daily retrieved topic posts, fitted trend and announcement date.'}
+fig("outputs/daily_counts.png")
+```
+
+```{r q1d-results, eval=analysis_ok}
+knitr::kable(data.frame(Slope=s$slope,CI_lower=s$slope_ci[1],CI_upper=s$slope_ci[2],
+ p_value=s$slope_p,R_squared=s$r_squared),digits=5)
+```
+
+*Trend interpretation pending.*
+
+## Q1(e): Limitations and sensitivity
+
+Daily counts can show abrupt spikes, unequal variance and serial dependence. A straight line averages these patterns and cannot establish a causal announcement effect. Search is not probability sampling, repeated authors violate simple independence assumptions, and the pre-event period may already contain rumours. Diagnostics and sensitivity checks inform interpretation; they do not repair all sampling limitations.
+
+```{r q1e, eval=analysis_ok, fig.cap='Regression residual and normal-quantile diagnostics.'}
+fig("outputs/regression_diagnostics.png")
+tbl("outputs/window_sensitivity.csv",digits=5,caption="Seven- and fourteen-day comparisons.")
+```
+
+# Question 2: Threads and word frequencies
+
+## Q2(a): Top three root posts
+
+Select root posts by descending reply count, breaking ties by likes and URI. Selection is among retrieved eligible posts, not all posts on Bluesky. Replies include available nested descendants; blocked/deleted nodes and pending branches are logged. Replies are collected at the current snapshot without restricting their dates to the event window.
+
+```{r q2a, eval=analysis_ok, results='asis'}
+top <- read.csv(asset("data/processed/top_threads.csv"),check.names=FALSE)
+for(i in seq_len(nrow(top))) {
+ cat("\n\n**",top$thread[i],"**\n\nAccount: `",top$handle[i],"`\n\n",sep="")
+ print(knitr::kable(data.frame(Replies=top$reply_count[i],Likes=top$like_count[i],Reposts=top$repost_count[i])))
+ # Verbatim text keeps markdown/LaTeX syntax in posts from being executed.
+ safe <- iconv(top$text[i], from="UTF-8", to="ASCII//TRANSLIT", sub="?")
+ safe <- gsub("`","'",safe,fixed=TRUE)
+ cat("\n\n~~~~text\n",safe,"\n~~~~\n\n[Original post](",top$url[i],")\n",sep="")
+}
+```
+
+## Q2(b): Top fifteen words per thread
+
+Preprocessing lowercases text and removes links, mentions, punctuation, numbers and English stopwords, while retaining “no”, “not” and “nor”. Product-name tokens are excluded. Terms are not stemmed. Replies independently detected as English by CLD3 are retained; uncertain or other-language replies are logged and excluded. This may exclude valid short English replies, so the language-screen table must be reviewed. Frequencies describe tokens, not sentiment [@feinerer2008; @manning2008].
+
+```{r q2b, eval=analysis_ok, fig.cap='Fifteen most frequent retained words in each thread.'}
+fig("outputs/thread_terms.png")
+tbl("outputs/top15_terms.csv",caption="Thread word frequencies.")
+```
+
+## Q2(c): Comparison of discussion themes
+
+*Pending close reading of the root posts and replies. Compare common vocabulary, distinctive themes, and conversational drift. Do not infer positivity or negativity from frequency alone.*
+
+# Question 3: TF-IDF and clustering
+
+## Q3(a): Document representation
+
+Each reply is a document. Terms occurring in fewer than two documents are removed. We use $w_{dt}=\log(1+tf_{dt})\log(N/df_t)$ and normalise nonzero document vectors to unit length. Zero vectors are excluded and counted. On unit vectors, squared Euclidean distance equals twice cosine dissimilarity [@wsumodules2026; @manning2008].
+
+```{r q3a, eval=analysis_ok}
+knitr::kable(data.frame(Retrieved_replies=s$replies_total,Language_eligible=s$eligible_replies,
+ Zero_vectors=s$zero_vectors,Clustered_documents=s$cluster_n,Terms=s$vocabulary))
+```
+
+## Q3(b): Selecting the number of clusters
+
+K-means is fitted in the full normalised term space with 50 starts per candidate K and fixed seeds. Within-cluster sum of squares (WSS) measures compactness. The elbow is the interior K with greatest vertical separation between normalised WSS and the straight line joining its endpoints. Silhouette values provide a separate diagnostic; neither guarantees meaningful clusters [@rkmeans2026; @rousseeuw1987].
+
+```{r q3b, eval=analysis_ok, fig.cap='WSS elbow and silhouette diagnostics.'}
+fig("outputs/cluster_selection.png")
+tbl("outputs/cluster_selection.csv",digits=4)
+```
+
+## Q3(c–d): Clusters and two-dimensional display
+
+Classical multidimensional scaling displays the Euclidean distances. Colours denote clusters and shapes denote original threads; clustering occurs before projection [@rmds2026].
+
+```{r q3cd, eval=analysis_ok, fig.cap='MDS projection of the clustered reply vectors.'}
+fig("outputs/clusters_2d.png")
+knitr::kable(data.frame(Selected_K=s$k,Mean_silhouette=s$mean_silhouette,
+ Positive_eigenvalue_fraction_2D=s$mds_gof),digits=5)
+```
+
+## Q3(e): Comparison with thread membership
+
+```{r q3e, eval=analysis_ok}
+tbl("outputs/cluster_thread_table.csv")
+tbl("outputs/cluster_terms.csv",digits=4,caption="Highest mean-weight terms within clusters.")
+purity <- sum(apply(a$cross,1,max))/sum(a$cross)
+baseline <- max(colSums(a$cross))/sum(a$cross)
+knitr::kable(data.frame(Purity=purity,Majority_thread_baseline=baseline,
+ Adjusted_Rand_index=s$ari),digits=5)
+```
+
+*Interpretation pending. Evaluate separation, projection loss and the majority baseline before assigning tentative theme labels. Thread membership is not a validated semantic label.*
+
+# Question 4: Follows network
+
+## Q4(a): Most active accounts
+
+The three seeds are the accounts with the most retained topic posts, identified by stable DIDs. Posting frequency is not equivalent to human engagement or influence.
+
+```{r q4a, eval=analysis_ok}
+tbl("data/processed/seeds.csv",caption="Most active sampled accounts.")
+```
+
+## Q4(b): Network construction
+
+For each seed, collect up to 50 followers and up to 50 followed accounts, paginate where necessary, deduplicate accounts and cap the returned lists explicitly. An edge points from follower to followed account. The graph contains the observed seed-adjacent edges; unrequested ties between other accounts are unknown, not known to be absent. This is a bounded local graph, not the full platform network.
+
+```{r q4b, eval=analysis_ok, fig.cap='Observed directed follows network; highlighted nodes are the three seeds.'}
+fig("outputs/network.png")
+tbl("data/processed/network_coverage.csv",caption="Network collection coverage.")
+```
+
+## Q4(c): Degree and PageRank
+
+In-degree counts observed incoming follows; out-degree counts observed outgoing follows. PageRank uses incoming links weighted by source importance and out-link allocation, with damping 0.85 [@freeman1979; @igraph2026]. Seed selection and capped sampling affect every metric.
+
+```{r q4c, eval=analysis_ok}
+central <- a$centrality
+for(metric in c("in_degree","out_degree","pagerank")) {
+ ranked <- central[order(-central[[metric]],central$handle),c("handle","in_degree","out_degree","pagerank")]
+ print(knitr::kable(head(ranked,10),digits=5,caption=paste("Top accounts by",metric)))
+}
+```
+
+*Comparison pending. Report ties, explain differences between degree and PageRank, and restrict influence claims to this sampled graph.*
+
+# Synthesis and limitations
+
+*The substantive synthesis will be completed after inspecting the generated results and manual classifications.*
+
+Findings are limited by query choice, language screening, non-random search retrieval, repeated contributors, and retrospective engagement snapshots. Three popular threads cannot represent all discussion. Dictionary labels may miss sarcasm and implicit affordability concerns. Clustering short replies can be unstable. The two-week design describes association around an announcement, not causal effects or consumer demand.
+
+# References {.unnumbered}
+
+::: {#refs}
+:::
+
+\newpage
+
+# Appendix: Coverage and reproducibility
+
+```{r coverage, eval=analysis_ok}
+tbl("data/processed/collection_counts.csv")
+tbl("data/processed/thread_coverage.csv")
+coverage <- read.csv(asset("data/processed/search_coverage.csv"))
+knitr::kable(data.frame(Terminal_intervals=nrow(coverage),Unresolved_near_caps=sum(coverage$near_cap)))
+```
+
+```{r export-results, include=FALSE}
+# Whitelist only research outputs: never zip the working directory or Rmd.
+# Authentication tokens, passwords, .Renviron and source Rmd are excluded.
+status <- list(collection_error=collection_error,analysis_error=analysis_error,
+ analysis_complete=analysis_ok,classification_validated=if(exists("validation_complete")) validation_complete else FALSE,
+ pipeline_version=pipeline_version,exported_at=as.character(Sys.time()))
+jsonlite::write_json(status,file.path(work,"run_status.json"),auto_unbox=TRUE,pretty=TRUE,null="null")
+writeLines(capture.output(sessionInfo()),file.path(work,"outputs/sessionInfo.txt"))
+files <- c(list.files(file.path(work,"data"),recursive=TRUE,full.names=TRUE),
+ list.files(file.path(work,"outputs"),recursive=TRUE,full.names=TRUE),
+ file.path(work,c("study_spec.json","run_status.json","validation_labels.csv","validation_key.rds","manual_price_overrides.csv")))
+files <- files[file.exists(files) & !dir.exists(files)]
+files <- files[grepl("\\.(csv|json|png|txt|rds)$",files,ignore.case=TRUE)]
+files <- files[!grepl("token|credential|password|renviron",basename(files),ignore.case=TRUE)]
+relative <- substring(normalizePath(files,winslash="/"),nchar(normalizePath(work,winslash="/"))+2L)
+zip_path <- file.path(base_dir,"iPhone_Duo_Results_v3.zip")
+zip::zip(zipfile=zip_path,files=relative,root=work,include_directories=FALSE,mode="mirror")
+```
+
+The companion **iPhone_Duo_Results_v3.zip** is saved beside this R Markdown file. It contains the data, figures, tables, coverage records and runtime details for review. Check `run_status.json` for execution and validation status. An executed analysis is not the same as a validated classifier. The editable `validation_labels.csv` is in the run folder; fill its labels and knit again in saved mode. The report source contains the executable methods; share a credential-free copy separately if required.
